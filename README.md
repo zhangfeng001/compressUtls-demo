@@ -1,7 +1,7 @@
-# compressUtls-demo
+# compressUtils-demo
 
 ### 简介
-- 这是一个js实现、利用canvas进行图片压缩的小例子
+- 这是一个js实现、利用canvas进行图片压缩工具类
 
 - 体积很小，方便引入项目
 
