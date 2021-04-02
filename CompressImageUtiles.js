@@ -19,7 +19,6 @@ function convertBase64UrlToBlob(urlData) {
 // base64 图片转 blob 后下载
 function downloadImgFromBase64(base64,fileName) {
   let compressImg = base64;
-  console.log(base64)
   let parts = compressImg.split(";base64,");
   let contentType = parts[0].split(":")[1];
   let raw = window.atob(parts[1]);
@@ -64,11 +63,9 @@ function compressImage(fileObj) {
     let fileName = fileObj.name ? '' : `${new Date().getTime()}-${fileObj.name}`;
   // 压缩图片
     reader.readAsDataURL(fileObj);
-    console.log(fileObj.size)
     let oSize = fileObj.size;
     let path = ''
     reader.onload = e => {
-      console.log(e)
       path = e.currentTarget.result
       let img = new Image();
       img.src = path;
@@ -104,6 +101,7 @@ function compressImage(fileObj) {
         let context = canvas.getContext('2d');
         canvas.height = compressedHeight;
         canvas.width = compressedWidth;
+        // context.globalAlpha = 0.2;
         context.clearRect(0, 0, compressedWidth, compressedHeight);
         context.drawImage(img, 0, 0, compressedWidth, compressedHeight);
         
@@ -115,7 +113,7 @@ function compressImage(fileObj) {
           let url = URL.createObjectURL(blob)
           //回调函数返回blob的值。也可根据自己的需求返回base64的值
           resolve({blob,base64,fileName,oSize})
-        },'image/jpeg', 0.5);
+        },'image/jpeg', 0.9);
       }
     }
   })

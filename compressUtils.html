@@ -16,8 +16,7 @@
 /**
  * 支持blob格式上传和base64格式上传
  * */ 
-    let compressImg = null;
-    let fileName = null;
+
     let inputDom = document.querySelector('#input-img')
     inputDom.onchange = function(){
         const fileObj = inputDom.files[0];
@@ -25,7 +24,7 @@
     }
     function _compressAndUploadFile(file){
         compressImage(file).then(resultObj => {
-            let {blob,base64,fileName,oSize} = resultObj
+            let {canvas,blob,base64,fileName,oSize} = resultObj
             console.log('压缩后的结果', blob); // result即为压缩后的结果
             console.log('压缩前大小', oSize/1024);
             console.log('压缩后大小', blob.size/1024);
